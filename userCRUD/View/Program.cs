@@ -19,7 +19,7 @@ class Program
             Console.WriteLine("9 - Sair");
 
             Console.Write("\nChoosen an option: ");
-            string opcao = Console.ReadLine();
+            string opcao = Console.ReadLine()!;
 
             switch (opcao)
             {

@@ -1,16 +1,32 @@
+using System.Globalization;
+using System.Text.RegularExpressions;
+
 internal class UserController : IUserController
 {
     static List<User> users = new List<User>();
     public void AddUser()
     {
-        Console.Write("\nEnter your name: ");
-        string name = Console.ReadLine();
+        string name;
+        string email;
+        string birthDate;
 
-        Console.Write("\nEnter your email: ");
-        string email = Console.ReadLine();
+        do
+        {
+            Console.Write("\nEnter your name: ");
+            name = Console.ReadLine()!;
+        } while (string.IsNullOrWhiteSpace(name) || NameIsExist(name));
 
-        Console.Write("Enter your birthDate (Day/Month/Year): ");
-        string birthDate = Console.ReadLine();
+        do
+        {
+            Console.Write("\nEnter your email: ");
+            email = Console.ReadLine()!;
+        } while (string.IsNullOrWhiteSpace(email));
+
+        do
+        {
+            Console.Write("\nEnter your birthDate (Day/Month/Year): ");
+            birthDate = Console.ReadLine()!;
+        } while (string.IsNullOrWhiteSpace(birthDate));
 
         User user = new User(name, email, birthDate);
         users.Add(user);
@@ -20,10 +36,18 @@ internal class UserController : IUserController
 
     public void EditUser()
     {
-        Console.Write("\nEnter the ID of the user to edit: ");
-        int id = Convert.ToInt32(Console.ReadLine());
+        int id;
+        string name;
+        string email;
+        string birthDate;
 
-        User user = users.Find(p => p.Id == id);
+        do
+        {
+            Console.Write("\nEnter the ID of the user to edit: ");
+            id = Convert.ToInt32(Console.ReadLine());
+        } while (id == 0);
+
+        User user = users.Find(u => u.Id == id)!;
 
         if (user == null)
         {
@@ -31,14 +55,23 @@ internal class UserController : IUserController
             return;
         }
 
-        Console.Write("Enter the new name: ");
-        string name = Console.ReadLine();
+        do
+        {
+            Console.Write("\nEnter the new name: ");
+            name = Console.ReadLine()!;
+        } while (string.IsNullOrWhiteSpace(name) && !NameIsExist(name));
 
-        Console.Write("Enter the new email: ");
-        string email = Console.ReadLine();
+        do
+        {
+            Console.Write("\nEnter the new email: ");
+            email = Console.ReadLine()!;
+        } while (string.IsNullOrWhiteSpace(email));
 
-        Console.Write("Enter the new birthdate (Day/Month/Year): ");
-        string birthDate = Console.ReadLine();
+        do
+        {
+            Console.Write("\nEnter the new birthdate (Day/Month/Year): ");
+            birthDate = Console.ReadLine()!;
+        } while (string.IsNullOrWhiteSpace(birthDate));
 
         user.Name = name;
         user.Email = email;
@@ -53,7 +86,7 @@ internal class UserController : IUserController
         Console.Write("\nEnter the ID of the user to delete: ");
         int id = Convert.ToInt32(Console.ReadLine());
 
-        User user = users.Find(p => p.Id == id);
+        User user = users.Find(u => u.Id == id)!;
 
         if (user == null)
         {
@@ -79,9 +112,9 @@ internal class UserController : IUserController
     public void ListByName()
     {
         Console.Write("\nEnter the name to be searched: ");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine()!;
 
-        List<User> usersFound = users.FindAll(p => p.Name == name);
+        List<User> usersFound = users.FindAll(u => u.Name.ToLower() == name.ToLower());
 
         if (usersFound.Count == 0)
         {
@@ -102,7 +135,7 @@ internal class UserController : IUserController
         Console.Write("\nEnter the ID to be searched: ");
         int id = Convert.ToInt32(Console.ReadLine());
 
-        User user = users.Find(p => p.Id == id);
+        User user = users.Find(u => u.Id == id)!;
 
         if (user == null)
         {
@@ -117,9 +150,9 @@ internal class UserController : IUserController
     public void ListByBirthDate()
     {
         Console.Write("\nEnter the birthdate to be searched (Day/Month/Year):");
-        string birthDate = Console.ReadLine();
+        string birthDate = Console.ReadLine()!;
 
-        List<User> usersFound = users.FindAll(p => p.BirthDate == DateTime.Parse(birthDate));
+        List<User> usersFound = users.FindAll(u => u.BirthDate == DateTime.Parse(birthDate));
 
         if (usersFound.Count == 0)
         {
@@ -140,7 +173,7 @@ internal class UserController : IUserController
         User olderUser = users[0];
 
         foreach (User user in users)
-        {   
+        {
             if (DateTime.Now.Subtract(user.BirthDate) > DateTime.Now.Subtract(olderUser.BirthDate))
             {
                 olderUser = user;
@@ -149,5 +182,19 @@ internal class UserController : IUserController
 
         Console.WriteLine("\nUser oldest registered user:");
         Console.WriteLine(olderUser);
+    }
+
+    public Boolean NameIsExist(string name)
+    {
+
+       List<User> usersFound = users.FindAll(u => u.Name.ToLower().Contains(name.ToLower()));
+
+        if (usersFound.Count == 0)
+        {
+            return false;
+        }
+
+        Console.WriteLine($"\nUsers found with the name '{name}', you need to other name!");
+        return true;
     }
 }
