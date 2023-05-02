@@ -1,0 +1,15 @@
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\bin\Debug\net6.0\userCRUD.exe
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\bin\Debug\net6.0\userCRUD.deps.json
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\bin\Debug\net6.0\userCRUD.runtimeconfig.json
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\bin\Debug\net6.0\userCRUD.dll
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\bin\Debug\net6.0\userCRUD.pdb
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.csproj.AssemblyReference.cache
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.AssemblyInfoInputs.cache
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.AssemblyInfo.cs
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.csproj.CoreCompileInputs.cache
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.dll
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\refint\userCRUD.dll
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.pdb
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\userCRUD.genruntimeconfig.cache
+C:\Users\rkzer\DEV\CRUDuser\userCRUD\obj\Debug\net6.0\ref\userCRUD.dll
