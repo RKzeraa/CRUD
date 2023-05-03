@@ -8,26 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\rkzer\\.nuget\\packages\\": {}
+    "C:\\Users\\ramom.silva\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rkzer\\DEV\\CRUDuser\\userCRUD\\userCRUD.csproj",
+      "projectUniqueName": "C:\\Users\\ramom.silva\\Projects\\CRUD\\userCRUD\\userCRUD.csproj",
       "projectName": "userCRUD",
-      "projectPath": "C:\\Users\\rkzer\\DEV\\CRUDuser\\userCRUD\\userCRUD.csproj",
-      "packagesPath": "C:\\Users\\rkzer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rkzer\\DEV\\CRUDuser\\userCRUD\\obj\\",
+      "projectPath": "C:\\Users\\ramom.silva\\Projects\\CRUD\\userCRUD\\userCRUD.csproj",
+      "packagesPath": "C:\\Users\\ramom.silva\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ramom.silva\\Projects\\CRUD\\userCRUD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rkzer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ramom.silva\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

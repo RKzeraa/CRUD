@@ -59,7 +59,7 @@ internal class UserController : IUserController
         {
             Console.Write("\nEnter the new name: ");
             name = Console.ReadLine()!;
-        } while (string.IsNullOrWhiteSpace(name) && !NameIsExist(name));
+        } while (string.IsNullOrWhiteSpace(name) || NameIsExist(name));
 
         do
         {
@@ -101,11 +101,15 @@ internal class UserController : IUserController
 
     public void ListAllUsers()
     {
+        if(users.Count > 0){
         Console.WriteLine("\nAll users registered:");
 
         foreach (User user in users)
         {
             Console.WriteLine(user);
+        }
+        }else {
+            Console.WriteLine("\nList is Empty, Create a new user to list all users");
         }
     }
 
@@ -170,24 +174,31 @@ internal class UserController : IUserController
 
     public void ListOlderUser()
     {
-        User olderUser = users[0];
-
-        foreach (User user in users)
+        if (users.Count > 0)
         {
-            if (DateTime.Now.Subtract(user.BirthDate) > DateTime.Now.Subtract(olderUser.BirthDate))
+            User olderUser = users[0];
+
+            foreach (User user in users)
             {
-                olderUser = user;
+                if (DateTime.Now.Subtract(user.BirthDate) > DateTime.Now.Subtract(olderUser.BirthDate))
+                {
+                    olderUser = user;
+                }
             }
+
+            Console.WriteLine("\nUser oldest registered user:");
+            Console.WriteLine(olderUser);
+        }
+        else {
+            Console.WriteLine("\nNo user was registered!");
         }
 
-        Console.WriteLine("\nUser oldest registered user:");
-        Console.WriteLine(olderUser);
     }
 
     public Boolean NameIsExist(string name)
     {
 
-       List<User> usersFound = users.FindAll(u => u.Name.ToLower().Contains(name.ToLower()));
+        List<User> usersFound = users.FindAll(u => u.Name.ToLower().Contains(name.ToLower()));
 
         if (usersFound.Count == 0)
         {
