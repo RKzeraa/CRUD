@@ -20,7 +20,10 @@ internal class UserController : IUserController
         {
             Console.Write("\nEnter your email: ");
             email = Console.ReadLine()!;
-        } while (string.IsNullOrWhiteSpace(email));
+            // bool ok = Regex.IsMatch(email, @"/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i");
+            if (!IsValidEmail(email))
+                Console.WriteLine("\nEmail format is invalid!");
+        } while (!IsValidEmail(email));
 
         do
         {
@@ -65,7 +68,9 @@ internal class UserController : IUserController
         {
             Console.Write("\nEnter the new email: ");
             email = Console.ReadLine()!;
-        } while (string.IsNullOrWhiteSpace(email));
+            if (!IsValidEmail(email))
+                Console.WriteLine("\nEmail format is invalid!");
+        } while (!IsValidEmail(email));
 
         do
         {
@@ -101,14 +106,17 @@ internal class UserController : IUserController
 
     public void ListAllUsers()
     {
-        if(users.Count > 0){
-        Console.WriteLine("\nAll users registered:");
-
-        foreach (User user in users)
+        if (users.Count > 0)
         {
-            Console.WriteLine(user);
+            Console.WriteLine("\nAll users registered:");
+
+            foreach (User user in users)
+            {
+                Console.WriteLine(user);
+            }
         }
-        }else {
+        else
+        {
             Console.WriteLine("\nList is Empty, Create a new user to list all users");
         }
     }
@@ -189,7 +197,8 @@ internal class UserController : IUserController
             Console.WriteLine("\nUser oldest registered user:");
             Console.WriteLine(olderUser);
         }
-        else {
+        else
+        {
             Console.WriteLine("\nNo user was registered!");
         }
 
@@ -208,4 +217,20 @@ internal class UserController : IUserController
         Console.WriteLine($"\nUsers found with the name '{name}', you need to other name!");
         return true;
     }
+
+    static bool IsValidEmail(string email)
+    {
+        Regex emailRx = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", RegexOptions.IgnoreCase);
+        return emailRx.IsMatch(email);
+        // try
+        // {
+        //     var addr = new System.Net.Mail.MailAddress(email);
+        //     return addr.Address == email;
+        // }
+        // catch
+        // {
+        //     return false;
+        // }
+    }
 }
+
