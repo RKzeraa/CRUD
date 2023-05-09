@@ -218,7 +218,7 @@ internal class UserController : IUserController
         return true;
     }
 
-    static bool IsValidEmail(string email)
+    private static bool IsValidEmail(string email)
     {
         Regex emailRx = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", RegexOptions.IgnoreCase);
         return emailRx.IsMatch(email);
