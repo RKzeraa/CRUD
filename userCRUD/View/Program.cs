@@ -20,6 +20,7 @@ class Program
 
             Console.Write("\nChoosen an option: ");
             string opcao = Console.ReadLine()!;
+            Console.Clear();
 
             switch (opcao)
             {
